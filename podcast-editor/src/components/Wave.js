@@ -5,7 +5,10 @@ class Wave extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      isReady: false,
+    }
+    this.wavesurfer = null
   }
 
   componentDidMount() {
@@ -17,14 +20,34 @@ class Wave extends Component {
     const { track } = this.props
 
     this.wavesurfer.load(track)
+    this.wavesurfer.on('ready', this.onReady)
+  }
 
-    this.wavesurfer.on('ready', () => console.log('READY'))
+  onReady = () => {
+    this.setState({
+      isReady: true
+    })
+    this.wavesurfer.play()
+  }
+
+  handlePlayPause = () => {
+    this.wavesurfer.playPause()
   }
 
   render() {
+    const { isReady } = this.state
+
     return (
       <div>
+        {
+          isReady
+            ? null
+            : <div>Loading ...</div>
+        }
         <div id='waveform' />
+        <div className={'controls'}>
+          <button className={'control'} onClick={this.handlePlayPause}>Play / Pause</button>
+        </div>
       </div>
     );
   }
