@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import * as firebase from "firebase";
 
 class PodcastSearchContainer extends Component {
   constructor(props) {
@@ -13,6 +14,9 @@ class PodcastSearchContainer extends Component {
 
   componentDidMount() {
     this.handlePodcastSearch()
+    
+    //FIRIEBASE USAGE EXAMPLE
+    firebase.database().ref('foo').set('bar')
   }
 
   onChangeText = (ev) => {
