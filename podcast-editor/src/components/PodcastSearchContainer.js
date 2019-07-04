@@ -14,7 +14,7 @@ class PodcastSearchContainer extends Component {
 
   componentDidMount() {
     this.handlePodcastSearch()
-    
+
     //FIRIEBASE USAGE EXAMPLE
     firebase.database().ref('foo').set('bar')
   }
