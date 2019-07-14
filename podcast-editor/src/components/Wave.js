@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import WaveSurfer from "wavesurfer.js";
 import Hotkeys from 'react-hot-keys';
+import {formatSecondsToTime} from "../utils";
 
 class Wave extends Component {
   constructor(props) {
@@ -107,6 +108,12 @@ class Wave extends Component {
     this.hotKeyHandlers[key]()
   }
 
+  handleSeekTo = (currentTime) => {
+    const { trackDuration } = this.state
+    const seekTo = currentTime / trackDuration
+    this.wavesurfer.seekTo(seekTo)
+  }
+
   formatSecondsToTime = (rawSeconds) => {
     let hours = 0
     let minutes = 0
@@ -129,8 +136,8 @@ class Wave extends Component {
     const { currentTime, trackDuration } = this.state
     return (
       <div>
-        <div>Current: {this.formatSecondsToTime(currentTime)}</div>
-        <div>Total: {this.formatSecondsToTime(trackDuration)}</div>
+        <div>Current: {formatSecondsToTime(currentTime)}</div>
+        <div>Total: {formatSecondsToTime(trackDuration)}</div>
        </div>
     )
   }

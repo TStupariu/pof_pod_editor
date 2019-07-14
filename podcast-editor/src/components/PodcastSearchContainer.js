@@ -6,7 +6,7 @@ class PodcastSearchContainer extends Component {
     super(props);
 
     this.state = {
-      searchTerm: 'zero to',
+      searchTerm: 'zero to ipo',
       podcasts: [],
       tracks: {}
     };
@@ -14,9 +14,6 @@ class PodcastSearchContainer extends Component {
 
   componentDidMount() {
     this.handlePodcastSearch()
-
-    //FIRIEBASE USAGE EXAMPLE
-    firebase.database().ref('foo').set('bar')
   }
 
   onChangeText = (ev) => {
@@ -46,7 +43,7 @@ class PodcastSearchContainer extends Component {
     const doc = parser.parseFromString(resultXML, "text/xml")
     let tracks = {}
     doc.querySelectorAll('item')
-      .forEach(item => {
+      .forEach(item =>  {
         const key = item.querySelector('guid').textContent
         const title = item.querySelector('title').textContent
         const description = item.querySelector('description').textContent
@@ -93,7 +90,7 @@ class PodcastSearchContainer extends Component {
     const { tracks } = this.state
     const track = tracks[key]
     return (
-      <div key={key} className={'track-container'} onClick={this.handleTrackClick(track)}>
+      <div key={key} className={'track-container'} onClick={this.handleTrackClick({...track, key})}>
         <img src={track.image} className={'track-image'}/>
         <div>
           <div className={'track-title'}>{track.title}</div>
