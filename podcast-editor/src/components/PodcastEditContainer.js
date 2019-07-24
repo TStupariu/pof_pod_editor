@@ -18,14 +18,16 @@ class PodcastEditContainer extends Component {
     const track = get(this, 'props.location.state.track', null)
     const { key } = track
     const snapshot = await db.ref(`comments/${key}`).once('value')
-    const data = snapshot.val()
-    const arrayData = Object.keys(data).map(key => ({
-      key: key / 1000000,
-      comment: data[key]
-    }))
-    this.setState({
-      comments: arrayData
-    })
+    if (snapshot.exists()) {
+      const data = snapshot.val()
+      const arrayData = Object.keys(data).map(key => ({
+        key: key / 1000000,
+        comment: data[key]
+      }))
+      this.setState({
+        comments: arrayData
+      })
+    }
   }
 
   handleCommentClick = (data) => () => {
