@@ -56,3 +56,7 @@
   text-overflow: ellipsis;
   max-height: 40px;
 }
+
+.option {
+  margin: 20px;
+}

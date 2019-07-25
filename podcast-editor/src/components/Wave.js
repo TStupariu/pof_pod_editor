@@ -114,22 +114,8 @@ class Wave extends Component {
     this.wavesurfer.seekTo(seekTo)
   }
 
-  formatSecondsToTime = (rawSeconds) => {
-    let hours = 0
-    let minutes = 0
-    let seconds = 0
-    if (rawSeconds > 60) {
-      minutes = Math.floor(rawSeconds / 60)
-      seconds = rawSeconds - (minutes * 60)
-      if (minutes > 60) {
-        hours = Math.floor(minutes / 60)
-        minutes = rawSeconds - (hours * 60)
-      }
-    } else {
-      seconds = rawSeconds
-    }
-    seconds = parseFloat(Math.round(seconds * 100) / 100).toFixed(2)
-    return `${hours ? `${hours}:` : ''}${minutes ? `${minutes}:` : ''}${seconds ? seconds : 0}`
+  handleAddPoll = () => {
+    this.props.handleAddPoll()
   }
 
   renderFormattedProgressTime = () => {
@@ -157,6 +143,7 @@ class Wave extends Component {
           <button className={'control'} onClick={this.handleZoomOut}>Zoom - (q)</button>
           <button className={'control'} onClick={this.handleSeekLeft}>-5 seconds (left)</button>
           <button className={'control'} onClick={this.handleSeekRight}>+5 seconds (right)</button>
+          <button className={'control'} onClick={this.handleAddPoll}>Add Poll</button>
         </Hotkeys>
       </div>
     )

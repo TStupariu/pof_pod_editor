@@ -16,6 +16,14 @@ const formatSecondsToTime = (rawSeconds) => {
   return `${hours ? `${hours}:` : ''}${minutes ? `${minutes}:` : ''}${seconds ? seconds : 0}`
 }
 
+const convertTimeToFirebaseKey = (time) => {
+  return `${time.toFixed(5) * 1000000}`
+}
+
+const sanitize = (value) => value.replace(/\.|\//g, "")
+
 export {
-  formatSecondsToTime
+  formatSecondsToTime,
+  convertTimeToFirebaseKey,
+  sanitize
 }
