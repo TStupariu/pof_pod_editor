@@ -12,7 +12,9 @@ class PodcastEditContainer extends Component {
     this.state = {
       comments: [],
       isAddingPoll: false,
-      poll: {}
+      isSettingEndScreen: false,
+      poll: {},
+      endScreen: {}
     }
   }
 
@@ -42,6 +44,12 @@ class PodcastEditContainer extends Component {
     })
   }
 
+  handleSetEndScreen = () => {
+    this.setState({
+      isSettingEndScreen: true,
+    })
+  }
+
   handlePollChange(name, value) {
     this.setState((oldState) => ({
       poll: {
@@ -65,6 +73,65 @@ class PodcastEditContainer extends Component {
         isAddingPoll: false
       })
     }
+  }
+
+  handleEndScreenSelect = (trackNo, trackId) => {
+    console.log(trackNo, trackId)
+    this.setState((oldState) => ({
+      endScreen: {
+        ...oldState.endScreen,
+        [trackNo]: trackId
+      }
+    }))
+  }
+
+  handleSubmitEndScreen = async () => {
+    const { endScreen } = this.state
+    const track = get(this, 'props.location.state.track', null)
+    const { key } = track
+    await db.ref(`endScreens/${sanitize(key)}`).set(endScreen)
+    this.setState({
+      isSettingEndScreen: false,
+      endScreen: {}
+    })
+  }
+
+  renderSetEndScreen = () => {
+    console.log(this.state)
+    const tracks = get(this, 'props.location.state.podcastTracks', {})
+    return (
+      <div>
+        <hr/>
+        <div>
+          <span>First Suggestion:</span>
+          <select name="" id="" onChange={ev => this.handleEndScreenSelect('track1', ev.target.value)}>
+            {
+              Object.keys(tracks).map(key => {
+                const item = tracks[key]
+                return (
+                  <option key={key} value={key}>{item.title}</option>
+                )
+              })
+            }
+          </select>
+        </div>
+        <div>
+          <span>Second Suggestion:</span>
+          <select name="" id="" onChange={ev => this.handleEndScreenSelect('track2', ev.target.value)}>
+            {
+              Object.keys(tracks).map(key => {
+                const item = tracks[key]
+                return (
+                  <option key={key} value={key}>{item.title}</option>
+                )
+              })
+            }
+          </select>
+          <button onClick={this.handleSubmitEndScreen}>Submit</button>
+        </div>
+        <hr/>
+      </div>
+    )
   }
 
   renderAddPoll = () => {
@@ -109,12 +176,19 @@ class PodcastEditContainer extends Component {
           </div>
         </div>
         <div>
-          <Wave track={audioTrack} ref={ref => this.waveRef = ref} handleAddPoll={this.handleAddPoll}/>
+          <Wave track={audioTrack} ref={ref => this.waveRef = ref} handleAddPoll={this.handleAddPoll} handleSetEndScreen={this.handleSetEndScreen}/>
         </div>
         <div>
           {
             this.state.isAddingPoll
               ? this.renderAddPoll()
+              : null
+          }
+        </div>
+        <div>
+          {
+            this.state.isSettingEndScreen
+              ? this.renderSetEndScreen()
               : null
           }
         </div>

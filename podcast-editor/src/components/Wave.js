@@ -118,6 +118,10 @@ class Wave extends Component {
     this.props.handleAddPoll()
   }
 
+  handleSetEndScreen = () => {
+    this.props.handleSetEndScreen()
+  }
+
   renderFormattedProgressTime = () => {
     const { currentTime, trackDuration } = this.state
     return (
@@ -144,6 +148,7 @@ class Wave extends Component {
           <button className={'control'} onClick={this.handleSeekLeft}>-5 seconds (left)</button>
           <button className={'control'} onClick={this.handleSeekRight}>+5 seconds (right)</button>
           <button className={'control'} onClick={this.handleAddPoll}>Add Poll</button>
+          <button className={'control'} onClick={this.handleSetEndScreen}>End Screen</button>
         </Hotkeys>
       </div>
     )

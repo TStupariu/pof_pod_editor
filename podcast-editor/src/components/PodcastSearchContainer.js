@@ -71,9 +71,13 @@ class PodcastSearchContainer extends Component {
     }, () => this.setState({
       audioTrack
     }))
+    console.log('state', this)
     this.props.history.push({
       pathname: '/edit',
-      state: { track }
+      state: {
+        track,
+        podcastTracks: this.state.tracks
+      }
     })
   }
 

@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fa078ebe-23ae-4679-ab7b-d3789289dd3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/tudorstupariu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/tudorstupariu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PodcastEditContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PodcastEditContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PodcastSearchContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PodcastSearchContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Wave.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Wave.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +23,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1920" />
-    <option name="height" value="2137" />
   </component>
   <component name="ProjectId" id="1OVDsMIWDTS32wfF9Xc9gce4UpQ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -90,6 +83,8 @@
       <workItem from="1563988033245" duration="359000" />
       <workItem from="1564047700249" duration="23000" />
       <workItem from="1564054077444" duration="4317000" />
+      <workItem from="1564318145137" duration="6000" />
+      <workItem from="1564318271357" duration="1587000" />
     </task>
     <servers />
   </component>
@@ -101,7 +96,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
